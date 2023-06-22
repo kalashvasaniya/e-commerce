@@ -1,10 +1,12 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Navbar from '../components/navbar/page'
+import Footer from '../components/footer/page'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'HomeoStore',
+  title: 'Vintage Vortex',
   description: 'E-Commerce Website for users!',
 }
 
@@ -17,6 +19,8 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {children}
         <div className="bg-black ">
+          <Navbar />
+          <Footer />
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
