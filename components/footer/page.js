@@ -70,7 +70,7 @@ const Footer = () => {
                             <p class="text-base text-white">
                                 <button>
                                     <span
-                                        class="font-extrabold rounded-md bg-pink-600 p-2 md:p-3 transition ease-linear delay-150 duration-300 hover:bg-pink-700">
+                                        class="font-semibold rounded-md bg-pink-600 p-2 md:p-3 transition ease-linear delay-150 duration-300 hover:bg-pink-700">
                                         <a href="https://6z236yooyhh.typeform.com/to/WP5J4BH1" target="_blank">
                                             Feedback
                                         </a>

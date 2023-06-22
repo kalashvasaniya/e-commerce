@@ -12,6 +12,12 @@ const Navbar = () => {
                         <span className="self-center text-xl font-semibold whitespace-nowrap text-pink-500">Vintage Vortex</span>
                     </Link>
 
+                    <button type="button" class="md:order-4 relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        <span class="sr-only">Notifications</span>
+                        <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">69</div>
+                    </button>
+
                     {/* search section */}
                     <div className="flex md:order-2">
                         {/* <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-100 hover:ring-2 hover:ring-gray-200 rounded-lg text-sm p-2.5 mr-1" >
@@ -46,33 +52,42 @@ const Navbar = () => {
                         </div>
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-black text-white">
                             <li>
-                                <Link href={'/home'} className="block py-2 pl-3 pr-4 text-gray-400 hover:text-white rounded md:bg-transparent md:p-0" aria-current="page">Home</Link>
+                                <Link href={'/home'} className="block py-2 pl-3 pr-4 text-gray-400 hover:text-white rounded md:bg-transparent md:p-0 focus:text-white active:text-white" aria-current="page">Home</Link>
                             </li>
                             <li>
-                                <Link href={'/about'} className="block py-2 pl-3 pr-4 text-gray-400 hover:text-white rounded md:bg-transparent md:p-0">About</Link>
+                                <Link href={'/about'} className="block py-2 pl-3 pr-4 text-gray-400 hover:text-white rounded md:bg-transparent md:p-0 focus:text-white active:text-white">About</Link>
                             </li>
                             <li>
-                                <Link href={'/contact'} className="block py-2 pl-3 pr-4 text-gray-400 hover:text-white rounded md:bg-transparent md:p-0">Contact</Link>
+                                <Link href={'/contact'} className="block py-2 pl-3 pr-4 text-gray-400 hover:text-white rounded md:bg-transparent md:p-0 focus:text-white active:text-white">Contact</Link>
                             </li>
                         </ul>
                     </div>
 
+
+
+
                 </div>
                 <hr className='text-gray-100' />
-                <div className="max-w-screen-xl px-4 py-3 mx-auto">
+                <div className="max-w-lg px-4 py-3 mx-auto align-middle">
                     <div className="flex items-center">
-                        <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
+                        <ul className="flex flex-row font-medium mt-0 mr-6 space-x-10 text-sm overflow-auto">
                             <li>
-                                <Link href={'/home'} className="text-white hover:text-pink-500" aria-current="page">Home</Link>
+                                <Link href={'/items/tshirt'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Tshirt</Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-white hover:text-pink-500">Company</Link>
+                                <Link href={'/items/jeans'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Jeans</Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-white hover:text-pink-500">Team</Link>
+                                <Link href={'/items/hoodies'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Hoodies</Link>
                             </li>
                             <li>
-                                <Link href="#" className="text-white hover:text-pink-500">Features</Link>
+                                <Link href={'/items/shoe'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Shoe</Link>
+                            </li>
+                            <li>
+                                <Link href={'/items/caps'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Caps</Link>
+                            </li>
+                            <li>
+                                <Link href={'/items/socks'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Socks</Link>
                             </li>
                         </ul>
                     </div>
