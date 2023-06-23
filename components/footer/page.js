@@ -3,8 +3,8 @@ import React from 'react'
 const Footer = () => {
     return (
         <>
-            <footer className="bg-black text-white">
-                <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <footer className="bg-black text-white pt-12">
+                <div className="mx-auto max-w-screen-xl p-4 py-6 lg:py-8">
 
                     <hr className="border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8 hidden md:block" />
 
