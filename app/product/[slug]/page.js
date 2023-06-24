@@ -1,18 +1,34 @@
-
-import Link from 'next/link'
+'use client'
+import { useState } from 'react'
 
 export default function Page({ params }) {
+    const [pin, setPin] = useState()
+    const checkAvailablity = async () => {
+        let pins = await fetch('http://localhost:3000/api/pincode')
+        pins = await pins.json()
+        if (pins.includes(parseInt(pin))) {
+            alert('Available')
+        }
+        else {
+            alert('Not Available')
+        }
+    }
+
+    const onChange = (e) => {
+        setPin(e.target.value)
+    }
+
     return (
         <>
             <div className="pt-32">
                 <section class="text-gray-600 body-font overflow-hidden">
                     <div class="container px-5 py-24 mx-auto">
                         <div class="md:grid grid-cols-3 m-auto">
-                            <a href="" class="block relative rounded overflow-hidden">
+                            <div class="block relative rounded overflow-hidden">
                                 <img alt="ecommerce" class="col-span-1 h-100 object-cover object-top rounded hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/61xFiBw2fNL._UY879_.jpg" />
-                            </a>
+                            </div>
                             <div class="col-span-2 lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                                <h2 class="text-sm title-font text-gray-400 tracking-widest">BRAND NAME</h2>
+                                <h2 class="text-sm title-font text-gray-400 tracking-widest">Vintage Vortex</h2>
                                 <h1 class="text-gray-200 text-3xl title-font font-medium mb-1">{params.slug}</h1>
                                 <div class="flex mb-4">
                                     <span class="flex items-center">
@@ -85,9 +101,17 @@ export default function Page({ params }) {
                                         </svg>
                                     </button>
                                 </div>
+                                <div className='mt-4'>
+                                    <label class="mb-2 text-xs font-medium text-gray-300">Check Availablity</label>
+                                    <div class="flex space-x-4">
+                                        <input onChange={onChange} type="text" class="block w-40 p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Enter your Pincode" required />
+                                        <button onClick={checkAvailablity} class="right-2.5 bottom-2.5 text-white bg-pink-500 hover:bg-pink-700 font-medium rounded-lg text-sm px-4 py-2">Check</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </section>
             </div>
         </>
