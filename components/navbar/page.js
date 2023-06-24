@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRef } from 'react'
 
-const Navbar = () => {
+const Navbar = ({ cart, subTotal, addToCart, clearCart, removeFromCart }) => {
     const toggleCart = () => {
         if (ref.current.classList.contains('-translate-x-full')) {
             ref.current.classList.remove('-translate-x-full')
@@ -31,29 +31,65 @@ const Navbar = () => {
 
                         {/* side navbar  */}
                         <div onClick={toggleCart} className="md:block hidden">
-                            <button type="button" className="relative items-center p-2 text-sm font-medium text-center group bg-white rounded-full">
-                                <svg className='w-6 h-6 text-gray-400 group-hover:text-pink-500' viewBox="0 0 1024 1024">
+                            <button type="button" className="relative items-center p-2 text-sm font-medium text-center group bg-white rounded-full hover:scale-110">
+                                <svg className='w-6 h-6' viewBox="0 0 1024 1024">
                                     <path d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 00-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 100 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 00-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 00-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6z" /></svg>
                                 <span className="sr-only">Notifications</span>
                                 <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">69</div>
                             </button>
 
-                            <div ref={ref} onClick={toggleCart} class="absolute top-0 left-0 z-60 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-700" tabindex="-1">
-                                <h5 class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
-                                <button onClick={toggleCart} type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" >
+                            <div ref={ref} onClick={toggleCart} class="absolute top-0 left-0 z-60 w-96 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-800" tabindex="-1">
+                                <h5 class="text-base font-semibold uppercase text-gray-200">shopping cart</h5>
+                                <button onClick={toggleCart} type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center" >
                                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                                     <span class="sr-only">Close menu</span>
                                 </button>
+
+                                <hr class="my-3" />
+
                                 <div class="py-4 overflow-y-auto">
                                     <ul class="space-y-2 font-medium">
-                                        <li>
-                                            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                                <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
-                                                <span class="ml-3">Dashboard</span>
-                                            </a>
-                                        </li>
+
+                                        {Object.keys(cart).length === 0 &&
+                                            <div class="flex justify-center p-2 text-gray-200 rounded-lg">
+                                                <span class="underline-offset-4 underline font-mono">
+                                                    Cart is empty!
+                                                </span>
+                                            </div>
+                                        }
+
+                                        {Object.keys(cart).map((key) => {
+                                            return (
+                                                <li key={key} className='grid grid-cols-2'>
+                                                    <div class="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
+                                                        <span class="ml-3 underline-offset-4 underline font-mono">
+                                                            {cart[key].name}
+                                                        </span>
+                                                    </div>
+
+                                                    <div className="flex space-x-3">
+                                                        <div className="bg-black text-white flex items-center my-3 px-4 rounded-full">
+                                                            <button onClick={() => removeFromCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">-</button>
+                                                        </div>
+                                                        <div className="flex items-center">
+                                                            <span className="text-gray-200 font-mono">{cart[key].quantity}</span>
+                                                        </div>
+                                                        <div className="bg-black text-white flex items-center my-3 px-4 rounded-full">
+                                                            <button onClick={() => addToCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">+</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            )
+                                        })}
                                     </ul>
                                 </div>
+
+                                {/* Buttons */}
+                                <div class="flex space-x-4 mt-16 justify-center">
+                                    <button onClick={clearCart} class="right-2.5 bottom-2.5 text-white bg-pink-500 hover:bg-pink-700 font-medium rounded-lg text-sm px-4 py-2">Clear Cart</button>
+                                    <button class="right-2.5 bottom-2.5 text-white bg-pink-500 hover:bg-pink-700 font-medium rounded-lg text-sm px-4 py-2">Checkout</button>
+                                </div>
+
                             </div>
                         </div>
 
@@ -151,10 +187,10 @@ const Navbar = () => {
                     </div>
                 </div>
 
-            </nav>
+            </nav >
 
             {/* bottom navbar */}
-            <nav className='md:hidden'>
+            < nav className='md:hidden' >
                 <div className="fixed z-50 w-full h-16 max-w-xs -translate-x-1/2 bg-gray-800 rounded-full bottom-4 left-1/2">
                     <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
                         <Link href={'/'} data-tooltip-target="tooltip-home" type="button" className="inline-flex flex-col items-center justify-center px-5 rounded-l-full group">
@@ -223,20 +259,9 @@ const Navbar = () => {
 
                     </div>
                 </div>
-            </nav>
+            </ nav>
         </>
     )
 }
 
 export default Navbar
-
-
-{/* Cart section  */ }
-{/* <Link href={'/checkout'} type="button" className="hidden md:block relative items-center text-sm font-medium text-center text-white hover:scale-110">
-                            <button type="button" className="relative items-center p-2 text-sm font-medium text-center group bg-white rounded-full" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-                                <svg className='w-6 h-6 text-gray-400 group-hover:text-pink-500' viewBox="0 0 1024 1024">
-                                    <path d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 00-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 100 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 00-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 00-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 00-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 01-31.6 31.6z" /></svg>
-                                <span className="sr-only">Notifications</span>
-                                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">69</div>
-                            </button>
-</Link> */}
