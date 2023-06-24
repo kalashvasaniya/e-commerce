@@ -3,14 +3,15 @@ import { useState } from 'react'
 
 export default function Page({ params }) {
     const [pin, setPin] = useState()
+    const [service, setService] = useState()
     const checkAvailablity = async () => {
         let pins = await fetch('http://localhost:3000/api/pincode')
         pins = await pins.json()
         if (pins.includes(parseInt(pin))) {
-            alert('Available')
+            setService(true)
         }
         else {
-            alert('Not Available')
+            setService(false)
         }
     }
 
@@ -107,13 +108,21 @@ export default function Page({ params }) {
                                         <input onChange={onChange} type="text" class="block w-40 p-2 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Enter your Pincode" required />
                                         <button onClick={checkAvailablity} class="right-2.5 bottom-2.5 text-white bg-pink-500 hover:bg-pink-700 font-medium rounded-lg text-sm px-4 py-2">Check</button>
                                     </div>
+
+                                    {!service && service != null && <div div className="text-xs text-red-700 mt-1">
+                                        Sorry, this product is not available in your area.
+                                    </div>}
+
+                                    {service && service != null && <div className="text-xs text-green-700 mt-1">
+                                        Hurray! This product is available in your area.
+                                    </div>}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div >
 
-                </section>
-            </div>
+                </section >
+            </div >
         </>
     )
 }
