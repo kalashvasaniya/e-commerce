@@ -138,7 +138,7 @@ const Navbar = () => {
                                 <Link href={'/items/hoodies'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Hoodies</Link>
                             </li>
                             <li>
-                                <Link href={'/items/shoe'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Shoe</Link>
+                                <Link href={'/items/shoes'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Shoes</Link>
                             </li>
                             <li>
                                 <Link href={'/items/caps'} className="text-white hover:text-pink-500 focus:text-pink-500 active:text-pink-500">Caps</Link>
