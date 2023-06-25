@@ -29,12 +29,11 @@ export default function RootLayout({ children }) {
     }
   }, [])
 
-
-  const saveCart = (cart) => {
+  let saveCart = (cart) => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }
 
-  const addToCart = (id, name, price, quantity, size, color) => {
+  let addToCart = (id, name, price, quantity, size, color) => {
     if (cart[id]) {
       cart[id].quantity += quantity
     }
@@ -46,13 +45,13 @@ export default function RootLayout({ children }) {
     saveCart(cart)
   }
 
-  const clearCart = () => {
+  let clearCart = () => {
     setCart({})
     setSubTotal(0)
     saveCart({})
   }
 
-  const removeFromCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
+  let removeFromCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
     if (cart[id]) {
       cart[id].quantity -= quantity
     }
