@@ -49,6 +49,7 @@ export function useCart() {
     setCart({})
     setSubTotal(0)
     saveCart({})
+    window.location.reload()
   }
 
   const removeFromCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
