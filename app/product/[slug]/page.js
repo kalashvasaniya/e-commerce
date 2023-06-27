@@ -23,7 +23,7 @@ export default function Slug({ params }) {
     }
 
     const handleAddToCart = () => {
-        addToCart(2, 'Vintage Vortex', 58, 1, 'M', 'black')
+        addToCart(`${params.slug}`, `${params.slug}`, 58, 1, 'M', 'black')
         window.location.reload()
     };
 

@@ -11,7 +11,7 @@ const Jeans = () => {
             <div class="grid text sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 -m-4 gap-12">
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
@@ -22,7 +22,7 @@ const Jeans = () => {
               </div>
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
@@ -33,7 +33,7 @@ const Jeans = () => {
               </div>
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
@@ -44,7 +44,7 @@ const Jeans = () => {
               </div>
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
@@ -55,7 +55,7 @@ const Jeans = () => {
               </div>
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
@@ -66,7 +66,7 @@ const Jeans = () => {
               </div>
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
@@ -77,7 +77,7 @@ const Jeans = () => {
               </div>
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
@@ -88,7 +88,7 @@ const Jeans = () => {
               </div>
 
               <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <Link href={'/product/wear-the-tshirt'} class="block relative h-80 rounded overflow-hidden">
+                <Link href={'/product/wear-the-Jeans'} class="block relative h-80 rounded overflow-hidden">
                   <img alt="ecommerce" class=" object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/81DaozTSVxL._AC_UL800_QL65_.jpg" />
                 </Link>
                 <div class="mt-4">
