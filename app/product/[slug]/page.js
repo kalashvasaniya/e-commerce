@@ -23,8 +23,6 @@ export default function Slug({ params }) {
     }
 
     const handleAddToCart = () => {
-        // Call the addToCart function with the desired product details
-        console.log('Adding to cart:');
         addToCart(2, 'Vintage Vortex', 58, 1, 'M', 'black')
         window.location.reload()
     };
