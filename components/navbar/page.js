@@ -3,8 +3,11 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { useCart } from '@/app/layout'
 
-const Navbar = ({ cart, subTotal, addToCart, clearCart, removeFromCart }) => {
+
+const Navbar = () => {
+    const { cart, subTotal, addToCart, clearCart, removeFromCart } = useCart()
     const toggleCart = () => {
         if (ref.current.classList.contains('-translate-x-full')) {
             ref.current.classList.remove('-translate-x-full')

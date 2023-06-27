@@ -14,7 +14,7 @@ const metadata = {
   description: 'E-Commerce Website for users!',
 }
 
-export default function RootLayout({ children }) {
+export function useCart() {
   const [cart, setCart] = useState({})
   const [subTotal, setSubTotal] = useState(0)
 
@@ -29,11 +29,11 @@ export default function RootLayout({ children }) {
     }
   }, [])
 
-  let saveCart = (cart) => {
+  const saveCart = (cart) => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }
 
-  let addToCart = (id, name, price, quantity, size, color) => {
+  const addToCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
     if (cart[id]) {
       cart[id].quantity += quantity
     }
@@ -45,13 +45,13 @@ export default function RootLayout({ children }) {
     saveCart(cart)
   }
 
-  let clearCart = () => {
+  const clearCart = () => {
     setCart({})
     setSubTotal(0)
     saveCart({})
   }
 
-  let removeFromCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
+  const removeFromCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
     if (cart[id]) {
       cart[id].quantity -= quantity
     }
@@ -63,6 +63,12 @@ export default function RootLayout({ children }) {
     saveCart(cart)
   }
 
+  return { cart, subTotal, addToCart, clearCart, removeFromCart };
+}
+
+export default function RootLayout({ children }) {
+
+  const { cart, subTotal, addToCart, clearCart, removeFromCart } = useCart();
   return (
     <html lang="en">
       <head>

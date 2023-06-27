@@ -1,7 +1,9 @@
 'use client'
 import { useState } from 'react'
+import { useCart } from '@/app/layout'
 
-export default function Slug({ params, addToCart }) {
+export default function Slug({ params }) {
+    const { addToCart } = useCart()
     const [pin, setPin] = useState()
     const [service, setService] = useState()
 
@@ -20,6 +22,13 @@ export default function Slug({ params, addToCart }) {
         setPin(e.target.value)
     }
 
+    const handleAddToCart = () => {
+        // Call the addToCart function with the desired product details
+        console.log('Adding to cart:');
+        addToCart(2, 'Vintage Vortex', 58, 1, 'M', 'black')
+        window.location.reload()
+    };
+
     return (
         <>
             <div className="pt-32">
@@ -31,7 +40,9 @@ export default function Slug({ params, addToCart }) {
                             </div>
                             <div className="col-span-2 lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                 <h2 className="text-sm title-font text-gray-400 tracking-widest">Vintage Vortex</h2>
-                                <h1 className="text-gray-200 text-3xl title-font font-medium mb-1">{params.slug}</h1>
+                                <h1 className="text-gray-200 text-3xl title-font font-medium mb-1">
+                                    {params.slug}
+                                </h1>
                                 <div className="flex mb-4">
                                     <span className="flex items-center">
                                         <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -96,7 +107,7 @@ export default function Slug({ params, addToCart }) {
                                 </div>
                                 <div className="flex">
                                     <span className="title-font font-medium text-2xl text-gray-300">$58.00</span>
-                                    <button onClick={() => addToCart(1, 'Vintage Vortex', 58, 1, 'M', 'black')} className="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-700 rounded">Add to Cart</button>
+                                    <button onClick={handleAddToCart} className="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-700 rounded">Add to Cart</button>
                                     <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-900 ml-4">
                                         <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                                             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
