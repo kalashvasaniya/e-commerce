@@ -1,22 +1,11 @@
-"use client"
-import React, { useState } from "react";
+import React from 'react'
 
-const Page = () => {
-  const countries = ["China", "Russia", "UK"];
-  const [menu, setMenu] = useState(false);
-  const [country, setCountry] = useState("United States");
-
-  const changeText = (e) => {
-    setMenu(false);
-    setCountry(e.target.textContent);
-  };
-
+const page = () => {
   return (
     <>
-      <div className="pt-52 pb-8">
-        <h1 className="text-4xl font-bold text-white text-center">Check Out</h1>
-      </div>
+        <h1 className='pt-52 h-screen'>Checkout</h1>
 
+<<<<<<< HEAD
       <div className="md:grid md:grid-cols-2 px-6">
 
         <div className="">
@@ -79,8 +68,10 @@ const Page = () => {
           </div >
         </div>
       </div>
+=======
+>>>>>>> parent of 12ff468 (Checkout page - 3)
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default page
