@@ -26,7 +26,7 @@ const Page = () => {
               <p className="text-base font-semibold leading-none text-gray-300">$520.00</p>
             </div>
             <div className="">
-              <img className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/61xFiBw2fNL._UY879_.jpg" alt="headphones" />
+              <img className="rounded-3xl p-4 w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/61xFiBw2fNL._UY879_.jpg" alt="headphones" />
             </div>
           </div>
         </div>
