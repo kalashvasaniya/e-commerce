@@ -65,33 +65,28 @@ const Navbar = () => {
 
                                         {Object.keys(cart).map((key) => {
                                             return (
-                                                <>
-                                                    <li key={key} className='grid grid-cols-2'>
-                                                        <div class="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
-                                                            <span class="ml-3 underline-offset-4 underline font-mono">
-                                                                {cart[key].name}
-                                                            </span>
-                                                        </div>
+                                                <li key={key} className='grid grid-cols-2'>
+                                                    <div class="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
+                                                        <span class="ml-3 underline-offset-4 underline font-mono">
+                                                            {cart[key].name}
+                                                        </span>
+                                                    </div>
 
-                                                        <div className="flex space-x-3 justify-center items-center align-middle text-center">
-                                                            <div className="bg-black text-white flex items-center px-3 p-1 rounded-full">
-                                                                <button onClick={() => removeFromCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">-</button>
-                                                            </div>
-                                                            <div className="flex items-center">
-                                                                <span className="text-gray-200 font-mono">{cart[key].quantity}</span>
-                                                            </div>
-                                                            <div className="bg-black text-white flex items-center px-3 p-1 rounded-full">
-                                                                <button onClick={() => addToCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">+</button>
-                                                            </div>
+                                                    <div className="flex space-x-3">
+                                                        <div className="bg-black text-white flex items-center my-3 px-4 rounded-full">
+                                                            <button onClick={() => removeFromCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">-</button>
                                                         </div>
-                                                    </li>
-                                                </>
+                                                        <div className="flex items-center">
+                                                            <span className="text-gray-200 font-mono">{cart[key].quantity}</span>
+                                                        </div>
+                                                        <div className="bg-black text-white flex items-center my-3 px-4 rounded-full">
+                                                            <button onClick={() => addToCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">+</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
                                             )
                                         })}
                                     </ul>
-                                </div>
-                                <div className="font-mono font-bold mt-4">
-                                    Subtotal: ${subTotal}
                                 </div>
 
                                 {/* Buttons */}
