@@ -15,54 +15,55 @@ const metadata = {
 }
 
 export function useCart() {
-  const [cart, setCart] = useState({})
-  const [subTotal, setSubTotal] = useState(0)
+  const [cart, setCart] = useState({});
+  const [subTotal, setSubTotal] = useState(0);
 
   useEffect(() => {
-    const cart = localStorage.getItem('cart')
+    const cart = localStorage.getItem('cart');
+    const storedSubTotal = localStorage.getItem('subTotal');
     try {
-      if (cart) {
-        setCart(JSON.parse(cart))
+      if (cart, storedSubTotal) {
+        setCart(JSON.parse(cart));
+        setSubTotal(parseFloat(storedSubTotal));
       }
     } catch (error) {
-      localStorage.clear()
+      localStorage.clear();
     }
-  }, [])
+  }, []);
 
-  const saveCart = (cart) => {
-    localStorage.setItem('cart', JSON.stringify(cart))
-  }
+  const saveCart = (cart, subTotal) => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('subTotal', subTotal.toString());
+  };
 
   const addToCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
     if (cart[id]) {
-      cart[id].quantity += quantity
+      cart[id].quantity += quantity;
+    } else {
+      cart[id] = { id, name, price, quantity, size, color };
     }
-    else {
-      cart[id] = { id, name, price, quantity, size, color }
-    }
-    setCart({ ...cart })
-    setSubTotal(subTotal + price * quantity)
-    saveCart(cart)
-  }
+    setCart({ ...cart });
+    setSubTotal(subTotal + price * quantity);
+    saveCart(cart, subTotal + price * quantity);
+  };
 
   const clearCart = () => {
-    setCart({})
-    setSubTotal(0)
-    saveCart({})
-    window.location.reload()
-  }
+    setCart({});
+    setSubTotal(0);
+    saveCart({}, 0);
+    window.location.reload();
+  };
 
   const removeFromCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
     if (cart[id]) {
-      cart[id].quantity -= quantity
+      cart[id].quantity -= quantity;
+    } else {
+      cart[id] = { id, name, price, quantity, size, color };
     }
-    else {
-      cart[id] = { id, name, price, quantity, size, color }
-    }
-    setCart({ ...cart })
-    setSubTotal(subTotal - price * quantity)
-    saveCart(cart)
-  }
+    setCart({ ...cart });
+    setSubTotal(subTotal - price * quantity);
+    saveCart(cart, subTotal - price * quantity);
+  };
 
   return { cart, subTotal, addToCart, clearCart, removeFromCart };
 }

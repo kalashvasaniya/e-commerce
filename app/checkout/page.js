@@ -1,12 +1,9 @@
 "use client"
 import React from 'react'
 import { useCart } from '../layout'
-import Link from 'next/link'
-
-
 
 const page = () => {
-  const { cart, addToCart, removeFromCart, clearCart } = useCart()
+  const { cart, addToCart, removeFromCart, subTotal } = useCart()
   return (
     <>
       <div className="pt-52 pb-8">
@@ -18,8 +15,11 @@ const page = () => {
         <div className="">
           <div className="grid grid-cols-2 bg-gray-500 rounded-3xl p-4 max-w-xl m-auto mb-6">
             <div className="flex flex-col justify-start space-y-4">
-              <p className="text-xl md:text-2xl leading-normal font-mono font-bold text-gray-100">Logitech K251</p>
-              <p className="text-base font-semibold leading-none text-gray-300">$520.00</p>
+              <p className="text-xl md:text-2xl leading-normal font-mono underline-offset-2 underline font-bold text-gray-100">Logitech K251</p>
+              <p className="text-base font-semibold leading-none text-white">
+                <span className="text-black font-mono">Price: </span>
+                <span className="text-black font-mono">₹ 1,999</span>
+              </p>
 
               <div class="p-2 overflow-y-auto">
                 <div class="py-4 overflow-y-auto">
@@ -35,7 +35,7 @@ const page = () => {
 
                     {Object.keys(cart).map((key) => {
                       return (
-                        <li key={key} className='grid grid-cols-2'>
+                        <li key={key} className='md:grid md:grid-cols-2 flex flex-col justify-start'>
                           <div class="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
                             <span class="truncate underline-offset-4 underline font-mono">
                               {cart[key].name}
@@ -106,7 +106,7 @@ const page = () => {
             </div>
 
             <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Pay
+              Pay ${subTotal.toFixed(2)}
             </button>
           </form>
 
