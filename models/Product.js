@@ -41,4 +41,5 @@ const ProductSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 ProductSchema.index({ slug: 1 });
-module.exports = mongoose.model("Product", ProductSchema);
+mongoose.models = {}
+module.exports = mongoose.model('Product', ProductSchema);
