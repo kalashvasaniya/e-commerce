@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import { useCart } from '../layout'
+import Image from 'next/image'
 
 const Order = () => {
     const { cart, addToCart, removeFromCart, subTotal } = useCart()
@@ -40,12 +41,14 @@ const Order = () => {
                                 <span class="title-font font-medium text-2xl text-gray-200">You Pay <span className='text-green-500'>
                                     ${subTotal}
                                 </span> For <span className='text-green-500'>
-                                    {Object.keys(cart).reduce((acc, key) => acc + cart[key].quantity, 0)}
-                                </span> Items</span>
+                                        {Object.keys(cart).reduce((acc, key) => acc + cart[key].quantity, 0)}
+                                    </span> Items</span>
                                 <button class="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-700 rounded">Track Order</button>
                             </div>
                         </div>
-                        <img alt="ecommerce" class="w-full h-96 object-cover object-center rounded" src="https://dummyimage.com/400x400" />
+                        <div className='m-auto'>
+                            <Image height={400} width={200} alt="ecommerce" className="object-cover object-center ring-2 ring-white rounded-full" src={'/Logo1.png'} />
+                        </div>
                     </div>
                 </div>
             </section >
