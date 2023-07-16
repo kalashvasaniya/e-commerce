@@ -10,7 +10,8 @@ const Tshirt = () => {
       try {
         const response = await fetch('http://localhost:3000/api/getproducts');
         const data = await response.json();
-        setProducts(data.products);
+        const filteredProducts = data.products.filter(product => product.category === 'tshirt');
+        setProducts(filteredProducts);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -30,11 +31,7 @@ const Tshirt = () => {
               {products.map((product) => (
                 <div key={product._id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
                   <Link href={`/product/${product.slug}`} className="block relative h-80 rounded overflow-hidden">
-                    <img
-                      alt="ecommerce"
-                      className="object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300"
-                      src={product.image}
-                    />
+                    <img alt="ecommerce" className="object-cover object-top w-full h-full block hover:scale-110 transition ease-in delay-300" src={product.image} />
                   </Link>
                   <div className="mt-4">
                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
