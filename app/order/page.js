@@ -27,12 +27,15 @@ const Order = () => {
                             </div>
                             {Object.keys(cart).map((key) => {
                                 return (
+
                                     <div div key={key} className="border-gray-500" >
-                                        <div class="grid grid-cols-3 border-t py-2">
-                                            <span class="text-gray-100 truncate">{cart[key].name}</span>
-                                            <span class="ml-auto text-gray-300">₹{cart[key].price * cart[key].quantity}</span>
-                                            <span class="ml-auto text-gray-300">{cart[key].quantity}</span>
-                                        </div>
+                                        {cart[key].quantity > 0 ? (
+                                            <div class="grid grid-cols-3 border-t py-2">
+                                                <span class="text-gray-100 truncate">{cart[key].name}</span>
+                                                <span class="ml-auto text-gray-300">₹{cart[key].price * cart[key].quantity}</span>
+                                                <span class="ml-auto text-gray-300">{cart[key].quantity}</span>
+                                            </div>
+                                        ) : null}
                                     </div>
                                 )
                             })}

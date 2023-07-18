@@ -57,7 +57,8 @@ export default function Slug({ params }) {
                     <div className="container px-5 py-24 mx-auto">
                         <div className="md:grid grid-cols-3 m-auto">
                             <div className="block relative rounded overflow-hidden">
-                                <img alt="ecommerce" className="col-span-1 h-100 object-cover object-top rounded hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/61xFiBw2fNL._UY879_.jpg" />
+                                <img alt="ecommerce" className="col-span-1 h-100 object-cover object-top rounded hover:scale-110 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/61xFiBw2fNL._UY879_.jpg" >
+                                </img>
                             </div>
                             <div className="col-span-2 lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                 <h2 className="text-sm title-font text-gray-400 tracking-widest">Vintage Vortex</h2>

@@ -27,7 +27,7 @@ const page = () => {
                   <ul class="space-y-2 font-medium">
 
                     {Object.keys(cart).length === 0 &&
-                      <div class="flex justify-center p-2 text-gray-200 rounded-lg">
+                      <div div class="flex justify-center p-2 text-gray-200 rounded-lg">
                         <span class="underline-offset-4 underline font-mono">
                           Cart is empty!
                         </span>
@@ -37,23 +37,28 @@ const page = () => {
                     {Object.keys(cart).map((key) => {
                       return (
                         <li key={key} className='md:grid md:grid-cols-2 flex flex-col justify-start'>
-                          <div class="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
-                            <span class="truncate underline-offset-4 underline font-mono">
-                              {cart[key].name}
-                            </span>
-                          </div>
+                          {cart[key].quantity > 0 && (
+                            <div class="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
+                              <span class="truncate underline-offset-4 underline font-mono">
+                                {cart[key].name}
+                              </span>
+                            </div>
+                          )}
 
-                          <div className="flex space-x-3 justify-center">
-                            <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
-                              <button onClick={() => removeFromCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color, window.location.reload())} className="text-gray-200 font-mono">-</button>
+                          {cart[key].quantity > 0 && (
+                            <div className="flex space-x-3 justify-center">
+                              <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
+                                <button onClick={() => removeFromCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color, window.location.reload())} className="text-gray-200 font-mono">-</button>
+                              </div>
+                              <div className="flex items-center">
+                                <span className="text-gray-200 font-mono">{cart[key].quantity}</span>
+                              </div>
+                              <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
+                                <button onClick={() => addToCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color, window.location.reload())} className="text-gray-200 font-mono">+</button>
+                              </div>
                             </div>
-                            <div className="flex items-center">
-                              <span className="text-gray-200 font-mono">{cart[key].quantity}</span>
-                            </div>
-                            <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
-                              <button onClick={() => addToCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color, window.location.reload())} className="text-gray-200 font-mono">+</button>
-                            </div>
-                          </div>
+                          )}
+
                         </li>
                       )
                     })}
@@ -67,11 +72,11 @@ const page = () => {
               <img className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300" src="https://m.media-amazon.com/images/I/61xFiBw2fNL._UY879_.jpg" alt="headphones" />
             </div>
           </div>
-        </div>
+        </div >
 
 
         {/* payment area  */}
-        <div className="p-8 bg-gray-200 flex flex-col rounded-3xl">
+        <div className="p-8 bg-gray-200 flex flex-col rounded-3xl" >
 
           <form>
             <div className="grid md:grid-cols-2 md:gap-6">
@@ -113,8 +118,8 @@ const page = () => {
             </Link>
           </form>
 
-        </div>
-      </div>
+        </div >
+      </div >
 
     </>
   )

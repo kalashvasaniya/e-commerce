@@ -66,23 +66,29 @@ const Navbar = () => {
                                         {Object.keys(cart).map((key) => {
                                             return (
                                                 <li key={key} className='grid grid-cols-2'>
-                                                    <div class="flex items-center p-2 text-gray-200 rounded-lg">
-                                                        <span class="underline-offset-4 underline font-mono truncate">
-                                                            {cart[key].name}
-                                                        </span>
-                                                    </div>
+                                                    {cart[key].quantity > 0 && (
+                                                        <div class="flex items-center p-2 text-gray-200 rounded-lg">
+                                                            <span class="underline-offset-4 underline font-mono truncate">
+                                                                {cart[key].name}
+                                                            </span>
+                                                        </div>
+                                                    )}
 
-                                                    <div className="flex space-x-3 justify-center">
-                                                        <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
-                                                            <button onClick={() => removeFromCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">-</button>
+                                                    {cart[key].quantity !== 0 && (
+                                                        <div className="flex space-x-3 justify-center">
+                                                            <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
+                                                                <button onClick={() => removeFromCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">-</button>
+                                                            </div>
+                                                            <div className="flex items-center">
+                                                                <span className="text-gray-200 font-mono">{cart[key].quantity}</span>
+                                                            </div>
+                                                            <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
+                                                                <button onClick={() => addToCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">+</button>
+                                                            </div>
                                                         </div>
-                                                        <div className="flex items-center">
-                                                            <span className="text-gray-200 font-mono">{cart[key].quantity}</span>
-                                                        </div>
-                                                        <div className="bg-black text-white flex items-center my-4 px-2 rounded-full">
-                                                            <button onClick={() => addToCart(cart[key].id, cart[key].name, cart[key].price, 1, cart[key].size, cart[key].color)} className="text-gray-200 font-mono">+</button>
-                                                        </div>
-                                                    </div>
+                                                    )}
+
+
                                                 </li>
                                             )
                                         })}
