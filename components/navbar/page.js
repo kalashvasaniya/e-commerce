@@ -90,7 +90,7 @@ const Navbar = () => {
                                 </div>
 
                                 <div className="">
-                                    <span className="text-gray-200 font-mono">Subtotal: ${subTotal.toFixed(2)}</span><br />
+                                    <span className="text-gray-200 font-mono">Subtotal: ₹{subTotal.toFixed(2)}</span><br />
                                 </div>
 
                                 {/* Buttons */}

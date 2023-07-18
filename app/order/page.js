@@ -8,7 +8,7 @@ const Order = () => {
     return (
         <>
             <div className="pt-52 pb-8">
-                <h1 className="text-4xl font-bold text-white text-center">Order</h1>
+                <h1 className="text-4xl font-bold text-white text-center underline underline-offset-4 ">Order</h1>
             </div>
 
             <section class="">
@@ -30,7 +30,7 @@ const Order = () => {
                                     <div div key={key} className="border-gray-500" >
                                         <div class="grid grid-cols-3 border-t py-2">
                                             <span class="text-gray-100 truncate">{cart[key].name}</span>
-                                            <span class="ml-auto text-gray-300">${cart[key].price * cart[key].quantity}</span>
+                                            <span class="ml-auto text-gray-300">₹{cart[key].price * cart[key].quantity}</span>
                                             <span class="ml-auto text-gray-300">{cart[key].quantity}</span>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@ const Order = () => {
                             <hr />
                             <div class="flex pt-4">
                                 <span class="title-font font-medium text-2xl text-gray-200">You Pay <span className='text-green-500'>
-                                    ${subTotal}
+                                    ₹{subTotal.toFixed(2)}
                                 </span> For <span className='text-green-500'>
                                         {Object.keys(cart).reduce((acc, key) => acc + cart[key].quantity, 0)}
                                     </span> Items</span>
