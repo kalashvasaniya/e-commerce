@@ -57,7 +57,7 @@ export default function Slug({ params }) {
                     <div className="container px-5 py-24 mx-auto">
                         <div className="md:grid grid-cols-3 m-auto">
                             <div className="block relative rounded overflow-hidden">
-                                <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={product.image} />
+                                <img alt="ecommerce" className="object-cover object-center w-full h-[35rem] block" src={product.image} />
                             </div>
                             <div className="col-span-2 lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                 <h2 className="text-sm title-font text-gray-400 tracking-widest">Vintage Vortex</h2>

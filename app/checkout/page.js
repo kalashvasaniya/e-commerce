@@ -2,27 +2,9 @@
 import React from 'react'
 import { useCart } from '../layout'
 import Link from 'next/link'
-import { useEffect } from 'react'
-import { useState } from 'react'
 
-export default function page() {
+export default function page({ params }) {
   const { cart, addToCart, removeFromCart, subTotal } = useCart()
-  const [product, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/getproducts');
-        const data = await response.json();
-        const filteredProducts = data.products.filter();
-        setProducts(filteredProducts[0]);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   return (
     <>
@@ -36,7 +18,13 @@ export default function page() {
           <div className="grid grid-cols-2 bg-gray-500 rounded-3xl p-4 max-w-xl m-auto mb-6">
             <div className="flex flex-col justify-start space-y-4">
               <p className="text-xl md:text-2xl leading-normal font-mono underline-offset-2 underline font-bold text-gray-100">
-                {product.name}
+                {Object.keys(cart).map((key) => {
+                  return (
+                    <div key={key}>
+                      {cart[key].name}
+                    </div>
+                  )
+                })}
               </p>
               <p className="text-base font-semibold leading-none text-white">
                 <span className="text-black font-mono">Price: </span>
@@ -44,6 +32,7 @@ export default function page() {
                   ₹{subTotal.toFixed(2)}
                 </span>
               </p>
+
 
               <div class="p-2 overflow-y-auto">
                 <div class="py-4 overflow-y-auto">
@@ -81,7 +70,6 @@ export default function page() {
                               </div>
                             </div>
                           )}
-
                         </li>
                       )
                     })}
@@ -92,11 +80,16 @@ export default function page() {
 
             {/* img of product  */}
             <div className="">
-              <img className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300"
-                src={
-                  product.image
-                }
-                alt="headphones" />
+              {Object.keys(cart).map((key) => (
+                <img
+                  key={key}
+                  width={100}
+                  height={100}
+                  className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300"
+                  src={`${cart[key].image}`}
+                  alt={cart[key].name}
+                  ></img>
+              ))}
             </div>
           </div>
         </div >
