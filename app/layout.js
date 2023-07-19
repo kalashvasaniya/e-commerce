@@ -36,7 +36,7 @@ export function useCart() {
     localStorage.setItem('subTotal', subTotal.toString());
   };
 
-  const addToCart = (id, name, price, quantity = 1, size = 'M', color = 'black') => {
+  const addToCart = (id, name, price, quantity = 1, size, color) => {
     if (cart[id]) {
       cart[id].quantity += quantity;
     } else {

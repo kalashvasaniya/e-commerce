@@ -45,7 +45,7 @@ export default function Slug({ params }) {
 
     const handleAddToCart = () => {
         if (product) {
-            addToCart(product.name, params.slug, product.price, 1, 'M', 'black');
+            addToCart(product.name, params.slug, product.price, 1, product.size, product.color);
             window.location.reload();
         }
     };
@@ -62,7 +62,7 @@ export default function Slug({ params }) {
                             <div className="col-span-2 lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                 <h2 className="text-sm title-font text-gray-400 tracking-widest">Vintage Vortex</h2>
                                 <h1 className="text-gray-200 text-3xl title-font font-medium mb-1">
-                                    {product.name}
+                                    {product.name} ({product.size}/{product.color})
                                 </h1>
                                 <div className="flex mb-4">
                                     <span className="flex items-center">

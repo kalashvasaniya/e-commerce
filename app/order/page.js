@@ -4,7 +4,7 @@ import { useCart } from '../layout'
 import Image from 'next/image'
 
 const Order = () => {
-    const { cart, addToCart, removeFromCart, subTotal } = useCart()
+    const { cart, subTotal } = useCart()
     return (
         <>
             <div className="pt-52 pb-8">
@@ -31,8 +31,8 @@ const Order = () => {
                                     <div div key={key} className="border-gray-500" >
                                         {cart[key].quantity > 0 ? (
                                             <div class="grid grid-cols-3 border-t py-2">
-                                                <span class="text-gray-100 truncate">{cart[key].name}</span>
-                                                <span class="ml-auto text-gray-300">₹{cart[key].price * cart[key].quantity}</span>
+                                                <span class="text-gray-100">{cart[key].name} ({cart[key].size}/{cart[key].color})</span>
+                                                <span class="ml-auto text-gray-300">₹{(cart[key].price * cart[key].quantity).toFixed(2)}</span>
                                                 <span class="ml-auto text-gray-300">{cart[key].quantity}</span>
                                             </div>
                                         ) : null}
