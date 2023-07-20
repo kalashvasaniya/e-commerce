@@ -79,11 +79,11 @@ export default function page() {
             </div>
 
             {/* img of product  */}
-            {Object.keys(cart).map((key) => (
-              <div key={key} className="">
-                <img className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300" src={cart[key].image} alt={cart[key].name} />
-              </div>
-            ))}
+            <div className="">
+              {Object.keys(cart).map((key) => (
+                <img key={key} className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300" src={`${cart[key].image}`} alt={cart[key].name} />
+              ))}
+            </div>
           </div>
         </div >
 
