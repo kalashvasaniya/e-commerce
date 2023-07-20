@@ -8,19 +8,52 @@ const Signup = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [cpassword, setCpassword] = useState()
-    
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if (password !== cpassword) {
+            alert('Passwords do not match')
+            return
+        }
+        const res = await fetch('http://localhost:3000/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, password })
+        })
+        const json = await res.json()
+        if (!res.ok) throw Error(json.message)
+        alert('User created successfully')
+
+        window.location.href = '/user/login'
+    }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        if (name === 'name') {
+            setName(value)
+        } else if (name === 'email') {
+            setEmail(value)
+        } else if (name === 'password') {
+            setPassword(value)
+        } else if (name === 'cpassword') {
+            setCpassword(value)
+        }
+    }
+
     return (
         <>
             <section className="bg-black pt-32">
                 <div className="flex flex-col items-center justify-center px-6 mx-auto mt-20" >
                     <Link href={'/user/signup'} className="flex items-center pb-5">
-                    <span className="self-center text-4xl font-bold">Sign up</span>
+                        <span className="self-center text-4xl font-bold">Sign up</span>
                     </Link>
-                    <form className="w-full rounded-lg shadow sm:max-w-md ring ring-gray-600 p-8">
+                    <form onSubmit={handleSubmit} className="w-full rounded-lg shadow sm:max-w-md ring ring-gray-600 p-8">
 
                         <div className="relative z-0 w-full mb-6 group">
                             <div className="relative z-0 w-full mb-6 group">
-                                <input type="text" name="name" id="name"
+                                <input onChange={handleChange} type="text" name="name" id="name"
                                     className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     placeholder=" "
                                     required />
@@ -30,7 +63,7 @@ const Signup = () => {
                         </div>
 
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="email" name="email" id="email" 
+                            <input onChange={handleChange} type="email" name="email" id="email"
                                 className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" "
                                 required />
@@ -41,7 +74,7 @@ const Signup = () => {
                         </div>
 
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="password" name="password" id="password" 
+                            <input onChange={handleChange} type="password" name="password" id="password"
                                 className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" " minLength={5}
                                 required />
@@ -51,7 +84,7 @@ const Signup = () => {
                         </div>
 
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="password" name="cpassword" id="cpassword" 
+                            <input onChange={handleChange} type="password" name="cpassword" id="cpassword"
                                 className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" " minLength={5}
                                 required />
