@@ -1,7 +1,14 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const Signup = () => {
+    const [name, setName] = useState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const [cpassword, setCpassword] = useState()
+    
     return (
         <>
             <section className="bg-black pt-32">
