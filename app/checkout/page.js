@@ -3,7 +3,7 @@ import React from 'react'
 import { useCart } from '../layout'
 import Link from 'next/link'
 
-export default function page({ params }) {
+export default function page() {
   const { cart, addToCart, removeFromCart, subTotal } = useCart()
 
   return (
@@ -21,7 +21,7 @@ export default function page({ params }) {
                 {Object.keys(cart).map((key) => {
                   return (
                     <div key={key}>
-                      {cart[key].name}
+                      {cart[key].name} ({cart[key].size}/{cart[key].color})
                     </div>
                   )
                 })}
@@ -79,18 +79,11 @@ export default function page({ params }) {
             </div>
 
             {/* img of product  */}
-            <div className="">
-              {Object.keys(cart).map((key) => (
-                <img
-                  key={key}
-                  width={100}
-                  height={100}
-                  className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300"
-                  src={`${cart[key].image}`}
-                  alt={cart[key].name}
-                  ></img>
-              ))}
-            </div>
+            {Object.keys(cart).map((key) => (
+              <div key={key} className="">
+                <img className="rounded-xl w-full h-56 object-cover object-top hover:scale-105 transition ease-in delay-300" src={cart[key].image} alt={cart[key].name} />
+              </div>
+            ))}
           </div>
         </div >
 
