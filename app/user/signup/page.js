@@ -26,7 +26,11 @@ const Signup = () => {
         if (!res.ok) throw Error(json.message)
         alert('User created successfully')
 
-        window.location.href = '/user/login'
+        if (json.success) {
+            window.location.href = '/user/login'
+        } else {
+            alert(json.error)
+        }
     }
 
     const handleChange = (e) => {

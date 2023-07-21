@@ -1,6 +1,8 @@
 import User from '@/models/User';
 import db from '@/middleware';
 
+var CryptoJS = require("crypto-js");
+
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
@@ -8,7 +10,7 @@ export default async function handler(req, res) {
             const user = await User.create({
                 name,
                 email,
-                password
+                password: CryptoJS.AES.encrypt(password, "keykalash").toString()
             });
             res.status(200).json({ success: true, data: user });
         } catch (err) {
