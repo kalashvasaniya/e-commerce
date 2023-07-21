@@ -18,6 +18,7 @@ const Login = () => {
         })
         const data = await res.json()
         if (data.success) {
+            localStorage.setItem('token', data.token)
             window.location.href = '/home'
         } else {
             alert(data.error)

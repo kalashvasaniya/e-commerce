@@ -2,6 +2,7 @@ import User from '@/models/User';
 import db from '@/middleware';
 
 var CryptoJS = require("crypto-js");
+var jwt = require('jsonwebtoken');
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -19,6 +20,7 @@ export default async function handler(req, res) {
         if (originalText !== password) {
             return res.status(400).json({ success: false, error: 'Invalid email or password' });
         }
-        res.status(200).json({ success: true, name: user.name, email });
+        var token = jwt.sign({ name: user.name, email }, 'jwtsecret', { expiresIn: '2d' });
+        res.status(200).json({ success: true, token });
     }
 }
