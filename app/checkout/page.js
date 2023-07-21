@@ -34,13 +34,13 @@ export default function page() {
               </p>
 
 
-              <div class="p-2 overflow-y-auto">
-                <div class="py-4 overflow-y-auto">
-                  <ul class="space-y-2 font-medium">
+              <div className="p-2 overflow-y-auto">
+                <div className="py-4 overflow-y-auto">
+                  <ul className="space-y-2 font-medium">
 
                     {Object.keys(cart).length === 0 &&
-                      <div div class="flex justify-center p-2 text-gray-200 rounded-lg">
-                        <span class="underline-offset-4 underline font-mono">
+                      <div div className="flex justify-center p-2 text-gray-200 rounded-lg">
+                        <span className="underline-offset-4 underline font-mono">
                           Cart is empty!
                         </span>
                       </div>
@@ -50,8 +50,8 @@ export default function page() {
                       return (
                         <li key={key} className='md:grid md:grid-cols-2 flex flex-col justify-start'>
                           {cart[key].quantity > 0 && (
-                            <div class="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
-                              <span class="truncate underline-offset-4 underline font-mono">
+                            <div className="flex flex-row  items-center p-2 text-gray-200 rounded-lg">
+                              <span className="truncate underline-offset-4 underline font-mono">
                                 {cart[key].name}
                               </span>
                             </div>
