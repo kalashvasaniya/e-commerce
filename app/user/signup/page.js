@@ -2,12 +2,19 @@
 import React from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 const Signup = () => {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [cpassword, setCpassword] = useState()
+
+    useEffect(() => {
+        if(localStorage.getItem('token')){
+          window.location.href = '/home'
+        }
+      }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

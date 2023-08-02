@@ -4,10 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { useCart } from '@/app/layout'
-import { useState } from 'react'
 
 const Navbar = () => {
-    const { cart, subTotal, addToCart, removeFromCart, clearCart, user } = useCart();
+    const { logout, cart, subTotal, addToCart, removeFromCart, clearCart, user } = useCart();
     const toggleCart = () => {
         if (ref.current.classList.contains('-translate-x-full')) {
             ref.current.classList.remove('-translate-x-full')
@@ -121,13 +120,13 @@ const Navbar = () => {
 
                             <div id="userDropdown" className="z-10 hidden divide-y rounded-lg shadow w-44 bg-gray-700 divide-gray-600">
                                 <div className="px-4 py-3 text-sm text-white">
-                                    <div>kalash vasaniya</div>
-                                    <div className="font-medium truncate">kalash@gmail.com</div>
+                                    <div>{user.value ? user.name : "Hello, Please login"}</div>
+                                    <div className="font-medium truncate">{user.value ? user.email : ""}</div>
                                 </div>
                                 <div className="py-1">
                                     <button className="flex px-4 py-2 text-sm hover:bg-gray-600 text-gray-200">
                                         {
-                                            user.value ? <Link href={''}>Logout</Link> : <Link href={'/user/login'}>Login</Link>
+                                            user.value ? <div onClick={logout}>Logout</div> : <Link href={'/user/login'}>Login</Link>
                                         }
                                     </button>
                                 </div>

@@ -2,11 +2,18 @@
 import React from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 const Login = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
+    useEffect(() => {
+      if(localStorage.getItem('token')){
+        window.location.href = '/home'
+      }
+    }, [])
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
         const res = await fetch('http://localhost:3000/api/login', {

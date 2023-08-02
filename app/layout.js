@@ -42,6 +42,11 @@ export function useCart() {
     }
   }, []);
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser({value: null})
+  }
+
   const saveCart = (cart, subTotal) => {
     localStorage.setItem('cart', JSON.stringify(cart));
     localStorage.setItem('subTotal', subTotal.toString());
@@ -76,12 +81,12 @@ export function useCart() {
     saveCart(cart, subTotal - price * quantity);
   };
 
-  return { user, cart, subTotal, addToCart, clearCart, removeFromCart };
+  return { logout, user, cart, subTotal, addToCart, clearCart, removeFromCart };
 }
 
 export default function RootLayout({ children }) {
 
-  const { key, user, cart, subTotal, addToCart, clearCart, removeFromCart } = useCart();
+  const {logout, user, cart, subTotal, addToCart, clearCart, removeFromCart } = useCart();
   return (
     <html lang="en">
       <head>
@@ -90,7 +95,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {children}
         <div className="bg-black ">
-          <Navbar user={user} cart={cart} subTotal={subTotal} addToCart={addToCart} clearCart={clearCart} removeFromCart={removeFromCart} />
+          <Navbar logout={logout} user={user} cart={cart} subTotal={subTotal} addToCart={addToCart} clearCart={clearCart} removeFromCart={removeFromCart} />
           <Float />
           <Footer />
         </div>
