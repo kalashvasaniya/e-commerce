@@ -4,10 +4,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { useCart } from '@/app/layout'
-
+import { useState } from 'react'
 
 const Navbar = () => {
-    const { cart, subTotal, addToCart, clearCart, removeFromCart } = useCart()
+    const { cart, subTotal, addToCart, removeFromCart, clearCart, user } = useCart();
     const toggleCart = () => {
         if (ref.current.classList.contains('-translate-x-full')) {
             ref.current.classList.remove('-translate-x-full')
@@ -111,11 +111,13 @@ const Navbar = () => {
                         </div>
 
                         {/* Profile icon  */}
-                        <div className="md:block hidden pl-6">
-
-                            <Link href={'/user/login'}>
-                                <Image src={'/logo.jpeg'} width={100} height={100} id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer hover:scale-110" alt="User dropdown" />
-                            </Link>
+                        {
+                            !user.value && <div className="md:flex hidden ml-5 items-center bg-pink-600 hover:bg-pink-500 px-2 rounded-xl ">
+                                <Link href={'/user/login'}>Login</Link>
+                            </div>
+                        }
+                        <div className="md:block hidden pl-5">
+                            <Image src={'/logo.jpeg'} width={100} height={100} id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" className="w-10 h-10 rounded-full cursor-pointer hover:scale-110" alt="User dropdown" />
 
                             <div id="userDropdown" className="z-10 hidden divide-y rounded-lg shadow w-44 bg-gray-700 divide-gray-600">
                                 <div className="px-4 py-3 text-sm text-white">
@@ -123,10 +125,13 @@ const Navbar = () => {
                                     <div className="font-medium truncate">kalash@gmail.com</div>
                                 </div>
                                 <div className="py-1">
-                                    <button className="flex px-4 py-2 text-sm hover:bg-gray-600 text-gray-200">Logout</button>
+                                    <button className="flex px-4 py-2 text-sm hover:bg-gray-600 text-gray-200">
+                                        {
+                                            user.value ? <Link href={''}>Logout</Link> : <Link href={'/user/login'}>Login</Link>
+                                        }
+                                    </button>
                                 </div>
                             </div>
-
                         </div>
 
                     </div>

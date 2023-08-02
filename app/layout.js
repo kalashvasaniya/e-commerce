@@ -17,9 +17,12 @@ const metadata = {
 export function useCart() {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
+  const [user, setUser] = useState({ value: null });
+
 
   useEffect(() => {
     const cart = localStorage.getItem('cart');
+    const token = localStorage.getItem('token')
     const storedSubTotal = localStorage.getItem('subTotal');
     try {
       if (cart, storedSubTotal) {
@@ -27,6 +30,14 @@ export function useCart() {
         setSubTotal(parseFloat(storedSubTotal));
       }
     } catch (error) {
+      localStorage.clear();
+    }
+    try {
+      if (token) {
+        setUser({ value: token });
+      }
+    }
+    catch (error) {
       localStorage.clear();
     }
   }, []);
@@ -65,12 +76,12 @@ export function useCart() {
     saveCart(cart, subTotal - price * quantity);
   };
 
-  return { cart, subTotal, addToCart, clearCart, removeFromCart };
+  return { user, cart, subTotal, addToCart, clearCart, removeFromCart };
 }
 
 export default function RootLayout({ children }) {
 
-  const { cart, subTotal, addToCart, clearCart, removeFromCart } = useCart();
+  const { key, user, cart, subTotal, addToCart, clearCart, removeFromCart } = useCart();
   return (
     <html lang="en">
       <head>
@@ -79,7 +90,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {children}
         <div className="bg-black ">
-          <Navbar cart={cart} subTotal={subTotal} addToCart={addToCart} clearCart={clearCart} removeFromCart={removeFromCart} />
+          <Navbar user={user} cart={cart} subTotal={subTotal} addToCart={addToCart} clearCart={clearCart} removeFromCart={removeFromCart} />
           <Float />
           <Footer />
         </div>
