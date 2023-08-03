@@ -1,11 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useCart } from '@/app/layout'
 
 const Float = () => {
+    const { user } = useCart()
     return (
         <>
-            <div id="marketing-banner" tabIndex="-1" className="mt-32 fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-1 -translate-x-1/2 border rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6 bg-gray-800 border-gray-600">
+            {!user.value ? <div id="marketing-banner" tabIndex="-1" className="mt-32 fixed z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-1 -translate-x-1/2 border rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6 bg-gray-800 border-gray-600">
                 <div className="flex items-start mb-3 md:items-center flex-row md:mb-0 space-x-2 mr-4 md:space-x-8">
                     <Link href={'/home'} className="items-center space-x-4 hidden md:flex">
                         <Image className='rounded-full' src={'/Logo1.png'} alt="kalash" width={40} height={40} />
@@ -20,7 +22,9 @@ const Float = () => {
                         <span className="sr-only">Close banner</span>
                     </button>
                 </div>
-            </div>
+            </div> :
+                <div className=""></div>
+            }
         </>
     )
 }
