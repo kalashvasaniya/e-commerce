@@ -5,8 +5,8 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 const Login = () => {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     useEffect(() => {
       if(localStorage.getItem('token')){
@@ -16,7 +16,7 @@ const Login = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await fetch('http://localhost:3000/api/login', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

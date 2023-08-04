@@ -1,8 +1,6 @@
 "use client"
 import React from 'react'
 import { useCart } from '../layout'
-import Image from 'next/image'
-
 
 const orders = () => {
     const { cart, subTotal } = useCart()

@@ -13,7 +13,7 @@ export default function Slug({ params }) {
         const fetchProducts = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/api/getproducts`
+                    `${process.env.NEXT_PUBLIC_HOST}/api/getproducts`
                 );
                 const data = await response.json();
                 const filteredProducts = data.products.filter(
@@ -29,7 +29,7 @@ export default function Slug({ params }) {
     }, []);
 
     const checkAvailablity = async () => {
-        let pins = await fetch('http://localhost:3000/api/pincode')
+        let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
         pins = await pins.json()
         if (pins.includes(parseInt(pin))) {
             setService(true)

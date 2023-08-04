@@ -5,10 +5,10 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 const Signup = () => {
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const [cpassword, setCpassword] = useState()
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [cpassword, setCpassword] = useState('')
 
     useEffect(() => {
         if(localStorage.getItem('token')){
@@ -22,7 +22,7 @@ const Signup = () => {
             alert('Passwords do not match')
             return
         }
-        const res = await fetch('http://localhost:3000/api/signup', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
