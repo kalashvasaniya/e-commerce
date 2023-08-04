@@ -18,6 +18,7 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.4",
     "next": "13.4.7",
+    "paytmchecksum": "^1.5.1",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
