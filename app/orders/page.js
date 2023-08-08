@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import Link from 'next/link'
 import { useCart } from '../layout'
 
 const orders = () => {
@@ -41,10 +42,10 @@ const orders = () => {
                             <div className="flex pt-4">
                                 <span className="title-font font-medium text-2xl text-gray-200">Total Payment <span className='text-green-500'>
                                     ₹{subTotal.toFixed(2)}
-                                </span> For <span className='text-green-500'>
-                                        {Object.keys(cart).reduce((acc, key) => acc + cart[key].quantity, 0)}
-                                    </span> Items</span>
-                                <button className="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-700 rounded">Confirm Order</button>
+                                </span> For <span className='text-green-500'>{Object.keys(cart).reduce((acc, key) => acc + cart[key].quantity, 0)}</span> Items</span>
+
+                                <button className="flex ml-auto text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-700 rounded"><Link href={'/order'}>Confirm Order</Link></button>
+
                             </div>
                         </div>
                     </div>
