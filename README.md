@@ -23,4 +23,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## How to use
 
 
+https://github.com/kalashvasaniya/e-commerce/assets/88212870/2663ee7c-0e6b-48bb-be66-e2b75045849e
+
+
+
 ### | Kalash Vasaniya
