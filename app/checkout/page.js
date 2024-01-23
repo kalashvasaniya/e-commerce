@@ -2,7 +2,7 @@
 import React from 'react'
 import { useCart } from '../layout'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 // import Head from 'next/head'
 // import Script from 'next/script'
@@ -17,6 +17,13 @@ export default function Page() {
   const [pincode, setPincode] = useState('');
   const [address, setAddress] = useState('');
   const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      window.location.href = '/user/login'
+    }
+  })
+  
   
   const handleChange = (e) => {
     if (e.target.name == 'name') {
