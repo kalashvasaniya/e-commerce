@@ -2,9 +2,17 @@
 import React from 'react'
 import Link from 'next/link'
 import { useCart } from '../layout'
+import { useEffect } from 'react'
 
 const orders = () => {
     const { cart, subTotal } = useCart()
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+          window.location.href = '/user/login'
+        }
+      })
+      
     return (
         <>
             <div className="pt-52 pb-8">

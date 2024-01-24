@@ -60,7 +60,7 @@ const Signup = () => {
                     <Link href={'/user/signup'} className="flex items-center pb-5">
                         <span className="self-center text-4xl font-bold">Sign up</span>
                     </Link>
-                    <form onSubmit={handleSubmit} className="w-full rounded-lg shadow sm:max-w-md ring ring-gray-600 p-8">
+                    <form onSubmit={handleSubmit} className="w-full shadow sm:max-w-md p-8">
 
                         <div className="relative z-0 w-full mb-6 group">
                             <div className="relative z-0 w-full mb-6 group">

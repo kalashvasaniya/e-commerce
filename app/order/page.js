@@ -2,9 +2,18 @@
 import React from 'react'
 import { useCart } from '../layout'
 import Image from 'next/image'
+import { useEffect } from 'react'
 
 const Order = () => {
     const { cart, subTotal } = useCart()
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+          window.location.href = '/user/login'
+        }
+      })
+      
+
     return (
         <>
             <div className="pt-52 pb-8">

@@ -15,7 +15,7 @@
     "eslint": "^8.43.0",
     "flowbite": "^1.6.6",
     "jsonwebtoken": "^9.0.1",
-    "mongodb": "^5.7.0",
+    "mongodb": "^5.9.2",
     "mongoose": "^7.3.4",
     "next": "13.4.7",
     "paytmchecksum": "^1.5.1",
