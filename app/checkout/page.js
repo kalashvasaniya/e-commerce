@@ -23,8 +23,8 @@ export default function Page() {
       window.location.href = '/user/login'
     }
   })
-  
-  
+
+
   const handleChange = (e) => {
     if (e.target.name == 'name') {
       setName(e.target.value);
@@ -67,6 +67,7 @@ export default function Page() {
         {/* <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" /></Head>
         <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} crossorigin="anonymous" onLoad={() => { window.onload = () => { onScriptLoad(); }; }} /> */}
 
+        {/* cart area  */}
         <div className="">
           <div className="md:grid md:grid-cols-2 flex flex-col bg-gray-500 rounded-3xl p-4 max-w-xl m-auto mb-6">
             <div className="flex flex-col justify-start space-y-4">
@@ -138,7 +139,6 @@ export default function Page() {
 
           </div>
         </div >
-
 
         {/* payment area  */}
         <div className="p-8 bg-gray-200 flex flex-col rounded-3xl" >
