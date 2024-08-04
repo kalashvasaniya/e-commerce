@@ -22,7 +22,7 @@ const Signup = () => {
             alert('Passwords do not match')
             return
         }
-        const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
+        const res = await fetch(`/api/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

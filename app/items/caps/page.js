@@ -8,7 +8,7 @@ const Tshirt = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getproducts`);
+                const response = await fetch(`/api/getproducts`);
                 const data = await response.json();
                 const filteredProducts = data.products.filter(product => product.category === 'caps');
                 setProducts(filteredProducts);

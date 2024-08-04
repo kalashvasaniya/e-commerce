@@ -205,7 +205,7 @@ export default function Page() {
 
 //   const data = { cart, subTotal, oid, email: "email" };
 
-//   let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+//   let a = await fetch(`/api/pretransaction`, {
 //     method: 'POST',
 //     headers: {
 //       'Content-Type': 'application/json',
