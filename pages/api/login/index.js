@@ -1,10 +1,11 @@
 import User from '@/models/User';
-import db from '@/middleware';
+import connect from '@/lib/db';
 
 var CryptoJS = require("crypto-js");
 var jwt = require('jsonwebtoken');
 
 export default async function handler(req, res) {
+    await connect(); // Ensure a database connection
     if (req.method === 'POST') {
         const { email, password } = req.body;
         const user = await User.findOne({

@@ -1,7 +1,8 @@
 import Product from '@/models/Product';
-import db from '@/middleware';
+import connect from '@/lib/db';
 
 export default async function handler(req, res) {
+    await connect(); // Ensure a database connection
 
     console.log('CONNECTED TO MONGO');
     try {

@@ -1,9 +1,10 @@
 import User from '@/models/User';
-import db from '@/middleware';
+import connect from '@/lib/db';
 
 var CryptoJS = require("crypto-js");
 
 export default async function handler(req, res) {
+    await connect(); // Ensure a database connection
     if (req.method === 'POST') {
         try {
             const { name, email, password } = req.body;
