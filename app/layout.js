@@ -6,6 +6,7 @@ import Footer from '../components/footer/page'
 import Float from '@/components/float/page'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -44,7 +45,7 @@ export function useCart() {
 
   const logout = () => {
     localStorage.removeItem('token');
-    setUser({value: null})
+    setUser({ value: null })
   }
 
   const saveCart = (cart, subTotal) => {
@@ -86,7 +87,7 @@ export function useCart() {
 
 export default function RootLayout({ children }) {
 
-  const {logout, user, cart, subTotal, addToCart, clearCart, removeFromCart } = useCart();
+  const { logout, user, cart, subTotal, addToCart, clearCart, removeFromCart } = useCart();
   return (
     <html lang="en">
       <head>
@@ -95,6 +96,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {children}
         <div className="bg-black ">
+          <Analytics />
           <Navbar logout={logout} user={user} cart={cart} subTotal={subTotal} addToCart={addToCart} clearCart={clearCart} removeFromCart={removeFromCart} />
           <Float />
           <Footer />
